@@ -1,0 +1,42 @@
+#include <bits/stdc++.h> 
+vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
+	// vector<vector<int>> sample(n,vector<int>(m,0));
+	// for(int i=0;i<n;i++){
+	// 	for(int j=0;j<m;j++){
+	// 		sample[i][j]=matrix[i][j];
+	// 	}
+	// }
+	// for(int i=0;i<n;i++){
+	// 	for(int j=0;j<m;j++){
+	// 		if(matrix[i][j]==0){
+	// 			for(int col=0;col<m;col++){
+	// 				sample[i][col]=0;
+	// 			}
+	// 			for(int row=0;row<n;row++){
+	// 				sample[row][j]=0;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// return sample;
+
+	//BETTER SOLUTION
+	int row[n]={0};
+	int col[m]={0};
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			if(matrix[i][j]==0){
+				row[i]=1;
+				col[j]=1;
+			}
+		}
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			if(row[i]==1||col[j]==1){
+				matrix[i][j]=0;
+			}
+		}
+	}
+	return matrix;
+}
